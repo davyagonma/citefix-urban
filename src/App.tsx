@@ -10,6 +10,12 @@ import Signup from "./pages/Signup";
 import Signaler from "./pages/Signaler";
 import Carte from "./pages/Carte";
 import APropos from "./pages/APropos";
+import Paiement from "./pages/Paiement";
+import Profil from "./pages/Profil";
+import MesSignalements from "./pages/MesSignalements";
+import AdminDashboard from "./pages/admin/Dashboard";
+import GestionSignalements from "./pages/admin/GestionSignalements";
+import GestionUtilisateurs from "./pages/admin/GestionUtilisateurs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +33,12 @@ const App = () => (
           <Route path="/signaler" element={<Signaler />} />
           <Route path="/carte" element={<Carte />} />
           <Route path="/a-propos" element={<APropos />} />
+          <Route path="/paiement" element={<Paiement />} />
+          <Route path="/profil" element={<Profil />} />
+          <Route path="/mes-signalements" element={<MesSignalements />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/signalements" element={<GestionSignalements />} />
+          <Route path="/admin/utilisateurs" element={<GestionUtilisateurs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
