@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +23,10 @@ const Signup = () => {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleTermsChange = (checked: boolean | "indeterminate") => {
+    setAcceptTerms(checked === true);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -161,7 +164,7 @@ const Signup = () => {
               <Checkbox 
                 id="terms" 
                 checked={acceptTerms}
-                onCheckedChange={setAcceptTerms}
+                onCheckedChange={handleTermsChange}
               />
               <Label htmlFor="terms" className="text-sm">
                 J'accepte les{" "}
