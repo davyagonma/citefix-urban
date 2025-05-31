@@ -4,28 +4,31 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Users, Award, Target, Heart, Zap } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const APropos = () => {
+  const { t } = useLanguage();
+
   const values = [
     {
       icon: Heart,
-      title: "Engagement citoyen",
-      description: "Nous croyons en la force de l'engagement citoyen pour transformer nos villes"
+      title: t('citizenEngagement'),
+      description: t('citizenEngagementDesc')
     },
     {
       icon: Zap,
-      title: "Innovation",
-      description: "Utiliser la technologie pour créer des solutions durables et efficaces"
+      title: t('innovation'),
+      description: t('innovationDesc')
     },
     {
       icon: Users,
-      title: "Collaboration",
-      description: "Faciliter la collaboration entre citoyens, autorités et techniciens"
+      title: t('collaboration'),
+      description: t('collaborationDesc')
     },
     {
       icon: Target,
-      title: "Impact mesurable",
-      description: "Chaque signalement compte et contribue à l'amélioration de notre environnement"
+      title: t('measurableImpact'),
+      description: t('measurableImpactDesc')
     }
   ];
 
@@ -48,10 +51,10 @@ const APropos = () => {
   ];
 
   const stats = [
-    { number: "12", label: "Villes partenaires", description: "À travers le Bénin" },
-    { number: "15k+", label: "Citoyens actifs", description: "Utilisateurs engagés" },
-    { number: "3,247", label: "Problèmes résolus", description: "Depuis notre lancement" },
-    { number: "89%", label: "Taux de satisfaction", description: "Des utilisateurs" }
+    { number: "12", label: t('partnerCities'), description: t('acrossBenin') },
+    { number: "15k+", label: t('activeCitizens'), description: t('engagedUsers') },
+    { number: "3,247", label: t('problemsSolved'), description: t('sinceLaunch') },
+    { number: "89%", label: t('satisfactionRate'), description: t('ofUsers') }
   ];
 
   return (
@@ -67,16 +70,14 @@ const APropos = () => {
           </div>
           
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-            À propos de{" "}
+            {t('aboutTitle')}{" "}
             <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
               CitéFix
             </span>
           </h1>
           
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            CitéFix est née d'une vision simple : permettre à chaque citoyen de devenir 
-            un acteur du changement dans sa ville. Nous connectons les communautés aux 
-            autorités locales pour créer des environnements urbains plus durables et vivables.
+            {t('aboutDescription')}
           </p>
         </div>
 
@@ -84,27 +85,23 @@ const APropos = () => {
         <section className="mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Notre mission</h2>
+              <h2 className="text-3xl font-bold mb-6">{t('ourMission')}</h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Transformer la façon dont les villes du Bénin gèrent les problèmes urbains 
-                en donnant aux citoyens les outils pour signaler, suivre et participer 
-                activement à la résolution des défis de leur environnement.
+                {t('missionText1')}
               </p>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Nous croyons que chaque citoyen mérite de vivre dans une ville propre, 
-                sûre et fonctionnelle. Notre plateforme facilite cette vision en créant 
-                un pont transparent entre les besoins des communautés et l'action des autorités.
+                {t('missionText2')}
               </p>
               <Button className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700">
-                Rejoindre le mouvement
+                {t('joinMovement')}
               </Button>
             </div>
             <div className="relative">
               <div className="bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl p-8 text-center">
                 <MapPin className="h-24 w-24 text-blue-600 mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Votre ville, notre priorité</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">{t('yourCityOurPriority')}</h3>
                 <p className="text-gray-600">
-                  Ensemble, construisons des villes plus intelligentes et plus durables
+                  {t('buildSmartCities')}
                 </p>
               </div>
             </div>
@@ -114,9 +111,9 @@ const APropos = () => {
         {/* Values Section */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Nos valeurs</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('ourValues')}</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Les principes qui guident notre action quotidienne pour des villes meilleures
+              {t('valuesDescription')}
             </p>
           </div>
           
@@ -136,9 +133,9 @@ const APropos = () => {
         {/* Stats Section */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Notre impact</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('ourImpact')}</h2>
             <p className="text-xl text-gray-600">
-              Des chiffres qui témoignent de notre engagement pour le changement
+              {t('impactDescription')}
             </p>
           </div>
           
@@ -162,9 +159,9 @@ const APropos = () => {
         {/* Team Section */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Notre équipe</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('ourTeam')}</h2>
             <p className="text-xl text-gray-600">
-              Des experts passionnés par l'innovation urbaine et l'engagement citoyen
+              {t('teamDescription')}
             </p>
           </div>
           
@@ -188,16 +185,16 @@ const APropos = () => {
 
         {/* CTA Section */}
         <section className="text-center bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl text-white p-12">
-          <h2 className="text-3xl font-bold mb-4">Prêt à transformer votre ville ?</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('readyToTransform')}</h2>
           <p className="text-xl mb-8 opacity-90">
-            Rejoignez des milliers de citoyens engagés et commencez dès aujourd'hui
+            {t('transformDescription')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100">
-              Créer un compte
+              {t('createAccount')}
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-              Signaler un problème
+              {t('reportProblem')}
             </Button>
           </div>
         </section>

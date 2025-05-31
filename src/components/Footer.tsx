@@ -2,8 +2,12 @@
 import { MapPin, Bell, Camera, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSelector from "@/components/LanguageSelector";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-16">
@@ -16,17 +20,16 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold">CitéFix</h3>
-                <p className="text-sm text-gray-400">Votre ville, notre priorité</p>
+                <p className="text-sm text-gray-400">{t('tagline')}</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              CitéFix connecte les citoyens et les autorités locales pour créer des villes 
-              plus durables et vivables. Ensemble, transformons notre environnement urbain.
+              {t('aboutDescription')}
             </p>
             <div className="flex space-x-4">
               <div className="flex items-center space-x-2 text-sm text-gray-400">
                 <Camera className="h-4 w-4" />
-                <span>Signaler</span>
+                <span>{t('report')}</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-gray-400">
                 <Bell className="h-4 w-4" />
@@ -41,25 +44,25 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Navigation</h4>
+            <h4 className="font-semibold mb-4">{t('navigation')}</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Signaler un problème</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Carte interactive</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Mon profil</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Historique</a></li>
+              <li><a href="/" className="text-gray-300 hover:text-white transition-colors">{t('home')}</a></li>
+              <li><a href="/signaler" className="text-gray-300 hover:text-white transition-colors">{t('report')}</a></li>
+              <li><a href="/carte" className="text-gray-300 hover:text-white transition-colors">{t('map')}</a></li>
+              <li><a href="/profil" className="text-gray-300 hover:text-white transition-colors">{t('profile')}</a></li>
+              <li><a href="/mes-signalements" className="text-gray-300 hover:text-white transition-colors">{t('myReports')}</a></li>
             </ul>
           </div>
 
           {/* Support */}
           <div>
-            <h4 className="font-semibold mb-4">Support</h4>
+            <h4 className="font-semibold mb-4">{t('support')}</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Centre d'aide</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Guide d'utilisation</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Nous contacter</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Conditions d'utilisation</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Politique de confidentialité</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{t('helpCenter')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{t('userGuide')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{t('contactUs')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{t('terms')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{t('privacy')}</a></li>
             </ul>
           </div>
         </div>
@@ -67,17 +70,17 @@ const Footer = () => {
         {/* Newsletter */}
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="max-w-md">
-            <h4 className="font-semibold mb-4">Restez informé</h4>
+            <h4 className="font-semibold mb-4">{t('stayInformed')}</h4>
             <p className="text-gray-300 text-sm mb-4">
-              Recevez les dernières mises à jour sur les résolutions dans votre quartier.
+              {t('emailUpdates')}
             </p>
             <div className="flex space-x-2">
               <Input 
-                placeholder="Votre email" 
+                placeholder={t('emailPlaceholder')}
                 className="bg-gray-800 border-gray-700 text-white placeholder-gray-400"
               />
               <Button className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700">
-                S'abonner
+                {t('subscribe')}
               </Button>
             </div>
           </div>
@@ -86,12 +89,9 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 CitéFix. Tous droits réservés. Développé avec ❤️ pour les villes du Bénin.
+            {t('copyright')}
           </p>
-          <div className="flex space-x-6 text-sm text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Français</a>
-            <a href="#" className="hover:text-white transition-colors">English</a>
-          </div>
+          <LanguageSelector variant="outline" />
         </div>
       </div>
     </footer>
