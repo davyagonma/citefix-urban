@@ -41,11 +41,13 @@ const Header = () => {
             
             {/* Notification Button - only when logged in */}
             {isLoggedIn && (
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  3
-                </span>
+              <Button variant="ghost" size="icon" className="relative" asChild>
+                <Link to="/notifications">
+                  <Bell className="h-5 w-5" />
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    3
+                  </span>
+                </Link>
               </Button>
             )}
 
@@ -93,12 +95,14 @@ const Header = () => {
                 
                 {/* Mobile Notification Button - only when logged in */}
                 {isLoggedIn && (
-                  <Button variant="ghost" className="w-full justify-start mb-2 relative">
-                    <Bell className="h-5 w-5 mr-2" />
-                    {t('notifications')}
-                    <span className="absolute right-4 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                      3
-                    </span>
+                  <Button variant="ghost" className="w-full justify-start mb-2 relative" asChild>
+                    <Link to="/notifications">
+                      <Bell className="h-5 w-5 mr-2" />
+                      {t('notifications')}
+                      <span className="absolute right-4 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                        3
+                      </span>
+                    </Link>
                   </Button>
                 )}
               </div>

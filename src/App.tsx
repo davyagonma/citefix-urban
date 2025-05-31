@@ -15,6 +15,7 @@ import APropos from "./pages/APropos";
 import Paiement from "./pages/Paiement";
 import Profil from "./pages/Profil";
 import MesSignalements from "./pages/MesSignalements";
+import Notifications from "./pages/Notifications";
 import AdminDashboard from "./pages/admin/Dashboard";
 import GestionSignalements from "./pages/admin/GestionSignalements";
 import GestionUtilisateurs from "./pages/admin/GestionUtilisateurs";
@@ -40,6 +41,7 @@ const App = () => (
               <Route path="/paiement" element={<Paiement />} />
               <Route path="/profil" element={<Profil />} />
               <Route path="/mes-signalements" element={<MesSignalements />} />
+              <Route path="/notifications" element={<Notifications />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
               <Route path="/admin/signalements" element={<GestionSignalements />} />
               <Route path="/admin/utilisateurs" element={<GestionUtilisateurs />} />
