@@ -33,6 +33,9 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/signalements" element={<GestionSignalements />} />
+              <Route path="/admin/utilisateurs" element={<GestionUtilisateurs />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/signaler" element={<Signaler />} />
@@ -42,12 +45,8 @@ const App = () => (
               <Route path="/profil" element={<Profil />} />
               <Route path="/mes-signalements" element={<MesSignalements />} />
               <Route path="/notifications" element={<Notifications />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-              <Route path="/admin/signalements" element={<GestionSignalements />} />
-              <Route path="/admin/utilisateurs" element={<GestionUtilisateurs />} />
-              <Route path="/monprofil" element={<AdminDashboard />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
+              {/*<Route path="*" element={<NotFound />} />*/}
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
