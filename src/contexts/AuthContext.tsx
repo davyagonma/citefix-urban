@@ -1,18 +1,25 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+interface User {
+  name: string;
+  email: string;
+  role: 'user' | 'admin';
+}
+
 interface AuthContextType {
   isLoggedIn: boolean;
-  login: () => void;
+  login: (role?: 'user' | 'admin') => void;
   logout: () => void;
-  user: { name: string; email: string } | null;
+  user: User | null;
+  isAdmin: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState<{ name: string; email: string } | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     // Check if user is logged in from localStorage
@@ -25,8 +32,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const login = () => {
-    const mockUser = { name: 'John Doe', email: 'john@example.com' };
+  const login = (role: 'user' | 'admin' = 'user') => {
+    const mockUser: User = { 
+      name: role === 'admin' ? 'Admin User' : 'John Doe', 
+      email: role === 'admin' ? 'admin@example.com' : 'john@example.com',
+      role 
+    };
     setIsLoggedIn(true);
     setUser(mockUser);
     localStorage.setItem('isLoggedIn', 'true');
@@ -40,8 +51,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem('user');
   };
 
+  const isAdmin = user?.role === 'admin';
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, user }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, user, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

@@ -10,7 +10,25 @@ import LanguageSelector from "@/components/LanguageSelector";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, logout, isAdmin } = useAuth();
+
+  // Navigation items for regular users
+  const userNavItems = [
+    { to: "/", label: t('home') },
+    { to: "/signaler", label: t('report') },
+    { to: "/carte", label: t('map') },
+    { to: "/a-propos", label: t('about') }
+  ];
+
+  // Navigation items for admin users
+  const adminNavItems = [
+    { to: "/admin/dashboard", label: "Dashboard" },
+    { to: "/admin/signalements", label: "Gestion Signalements" },
+    { to: "/admin/utilisateurs", label: "Gestion Utilisateurs" },
+    { to: "/a-propos", label: t('about') }
+  ];
+
+  const navItems = isAdmin ? adminNavItems : userNavItems;
 
   return (
     <header className="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
@@ -30,10 +48,15 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors">{t('home')}</Link>
-            <Link to="/signaler" className="text-gray-700 hover:text-blue-600 transition-colors">{t('report')}</Link>
-            <Link to="/carte" className="text-gray-700 hover:text-blue-600 transition-colors">{t('map')}</Link>
-            <Link to="/a-propos" className="text-gray-700 hover:text-blue-600 transition-colors">{t('about')}</Link>
+            {navItems.map((item) => (
+              <Link 
+                key={item.to} 
+                to={item.to} 
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
@@ -85,10 +108,15 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
             <div className="flex flex-col space-y-4">
-              <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors">{t('home')}</Link>
-              <Link to="/signaler" className="text-gray-700 hover:text-blue-600 transition-colors">{t('report')}</Link>
-              <Link to="/carte" className="text-gray-700 hover:text-blue-600 transition-colors">{t('map')}</Link>
-              <Link to="/a-propos" className="text-gray-700 hover:text-blue-600 transition-colors">{t('about')}</Link>
+              {navItems.map((item) => (
+                <Link 
+                  key={item.to} 
+                  to={item.to} 
+                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
               
               <div className="pt-4 border-t border-gray-200">
                 <LanguageSelector className="mb-4" />
