@@ -33,13 +33,13 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/login" element={<AdminDashboard />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/signaler" element={<Signaler />} />
               <Route path="/carte" element={<Carte />} />
               <Route path="/a-propos" element={<APropos />} />
               <Route path="/paiement" element={<Paiement />} />
-              <Route path="/profil" element={<Profil />} />
+              <Route path="/profil" element={<Login />} />
               <Route path="/mes-signalements" element={<MesSignalements />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
